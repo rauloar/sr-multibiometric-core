@@ -56,3 +56,15 @@ Some hardware integrations require paid drivers.
 SUPPORTED VERSION
 
 Odoo 19 Community
+
+Installation
+
+See INSTALL.md
+
+Server configuration
+
+See ODOO_CONF.md
+
+Drivers
+
+See DRIVER_INSTALL.md
