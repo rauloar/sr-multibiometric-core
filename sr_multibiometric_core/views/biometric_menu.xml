@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Base Core Menu -->
+    <menuitem id="menu_biometric_root"
+              name="Biometric"
+              parent="hr_attendance.menu_hr_attendance_root"
+              sequence="50"
+              groups="hr_attendance.group_hr_attendance_manager"/>
+
+    <menuitem id="menu_biometric_devices"
+              name="Devices"
+              parent="menu_biometric_root"
+              sequence="10"/>
+</odoo>

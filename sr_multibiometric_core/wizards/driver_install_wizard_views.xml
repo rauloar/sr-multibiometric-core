@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_biometric_driver_install_wizard_form" model="ir.ui.view">
+        <field name="name">biometric.driver.install.wizard.form</field>
+        <field name="model">biometric.driver.install.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Install Driver">
+                <sheet>
+                    <div class="alert alert-warning mb-3" role="alert">
+                        <h4 class="alert-heading">Driver not installed</h4>
+                        <p>
+                            The <strong><field name="driver_id" readonly="1" nolabel="1"/></strong>
+                            driver module (technical name: <field name="module_name" readonly="1" nolabel="1"/>)
+                            is not installed.
+                        </p>
+                        <p>
+                            Repository package: <strong>hr_biometric</strong>.
+                        </p>
+                        <p class="mb-0">
+                            Click <strong>Install Driver</strong> to install it now.
+                            Odoo will reload automatically after the installation completes.
+                        </p>
+                    </div>
+                </sheet>
+                <footer>
+                    <button name="action_install_driver"
+                            string="Install Driver"
+                            type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

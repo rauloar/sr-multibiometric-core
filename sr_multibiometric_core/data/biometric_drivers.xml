@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- ZKTeco driver — module sr_multibiometric_zkteco -->
+    <record id="driver_zkteco" model="biometric.driver">
+        <field name="name">ZKTeco</field>
+        <field name="tech_key">zkteco</field>
+        <field name="module_name">sr_multibiometric_zkteco</field>
+    </record>
+
+    <!-- Hikvision driver — module sr_multibiometric_hikvision -->
+    <record id="driver_hikvision" model="biometric.driver">
+        <field name="name">Hikvision</field>
+        <field name="tech_key">hikvision</field>
+        <field name="module_name">sr_multibiometric_hikvision</field>
+    </record>
+</odoo>

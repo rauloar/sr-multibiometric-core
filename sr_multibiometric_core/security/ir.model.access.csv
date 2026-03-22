@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_core_biometric_device_manager,biometric.device.core.manager,model_biometric_device,hr_attendance.group_hr_attendance_manager,1,1,1,1
+access_core_biometric_log_manager,biometric.log.core.manager,model_biometric_log,hr_attendance.group_hr_attendance_manager,1,1,1,1
+access_core_biometric_driver_manager,biometric.driver.core.manager,model_biometric_driver,hr_attendance.group_hr_attendance_manager,1,1,1,1
+access_core_biometric_driver_user,biometric.driver.core.user,model_biometric_driver,base.group_user,1,0,0,0
+access_core_biometric_driver_install_wizard,biometric.driver.install.wizard.manager,model_biometric_driver_install_wizard,hr_attendance.group_hr_attendance_manager,1,1,1,1

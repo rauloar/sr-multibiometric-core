@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ── Form View ──────────────────────────────────────────────────────── -->
+    <record id="view_biometric_log_form" model="ir.ui.view">
+        <field name="name">biometric.log.form</field>
+        <field name="model">biometric.log</field>
+        <field name="arch" type="xml">
+            <form string="Biometric Log" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="device_id"/>
+                            <field name="device_user_id"/>
+                        </group>
+                        <group>
+                            <field name="timestamp"/>
+                            <field name="punch"/>
+                            <field name="processed"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Raw Data" name="raw_data">
+                            <field name="raw_data" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ── List View ─────────────────────────────────────────────────────── -->
+    <record id="view_biometric_log_list" model="ir.ui.view">
+        <field name="name">biometric.log.list</field>
+        <field name="model">biometric.log</field>
+        <field name="arch" type="xml">
+            <list string="Biometric Logs" create="false" default_order="timestamp desc">
+                <field name="device_id"/>
+                <field name="device_user_id"/>
+                <field name="timestamp"/>
+                <field name="punch"
+                       decoration-success="punch == 'check_in'"
+                       decoration-warning="punch == 'check_out'"
+                       widget="badge"/>
+                <field name="processed"
+                       decoration-success="processed == True"
+                       widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ── Search View ───────────────────────────────────────────────────── -->
+    <record id="view_biometric_log_search" model="ir.ui.view">
+        <field name="name">biometric.log.search</field>
+        <field name="model">biometric.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="device_user_id"/>
+                <field name="device_id"/>
+                <filter name="unprocessed" string="Pending" domain="[('processed','=',False)]"/>
+                <filter name="processed" string="Processed" domain="[('processed','=',True)]"/>
+                <filter name="check_in" string="Check-In" domain="[('punch','=','check_in')]"/>
+                <filter name="check_out" string="Check-Out" domain="[('punch','=','check_out')]"/>
+                <separator/>
+                <group>
+                    <filter name="group_device" string="Device" context="{'group_by': 'device_id'}"/>
+                    <filter name="group_punch" string="Punch Type" context="{'group_by': 'punch'}"/>
+                    <filter name="group_day" string="Day" context="{'group_by': 'timestamp:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ── Window Action ─────────────────────────────────────────────────── -->
+    <record id="action_biometric_log" model="ir.actions.act_window">
+        <field name="name">Biometric Logs</field>
+        <field name="res_model">biometric.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_biometric_log_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                No biometric logs found
+            </p>
+            <p>
+                Logs will appear here once a device synchronizes its attendance data.
+            </p>
+        </field>
+    </record>
+
+    <!-- ── Menu Item ─────────────────────────────────────────────────────── -->
+    <menuitem id="menu_biometric_log"
+              name="Biometric Logs"
+              parent="menu_biometric_root"
+              action="action_biometric_log"
+              sequence="60"
+              groups="hr_attendance.group_hr_attendance_manager"/>
+
+</odoo>
